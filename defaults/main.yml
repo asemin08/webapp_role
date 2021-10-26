@@ -1,6 +1,6 @@
 ---
 administrator: Allan
-my_ansible_user: admin
+ansible_user: admin
 
 instance_1:
   port: 8080

@@ -27,18 +27,18 @@
    
 - name: "Create directory webapp"
   file:
-    path: /home/{{ my_ansible_user }}/{{ instance_1.site_name }}
+    path: /home/{{ ansible_user }}/{{ instance_1.site_name }}
     state: directory
     
 - name: "Download data from git repo"
   git:
     repo: 'https://github.com/diranetafen/static-website-example.git'
-    dest: /home/{{ my_ansible_user }}/{{ instance_1.site_name }}
+    dest: /home/{{ ansible_user }}/{{ instance_1.site_name }}
 
 - name: "Copy new template"
   template: 		
     src: index.html.j2
-    dest: /home/{{ my_ansible_user }}/{{ instance_1.site_name }}/index.html
+    dest: /home/{{ ansible_user }}/{{ instance_1.site_name }}/index.html
 
 - name: "launch docker container"
   docker_container:
@@ -47,4 +47,4 @@
     ports: 
       - "{{ instance_1.port }}:80"
     volumes:
-      - /home/{{ my_ansible_user }}/{{ instance_1.site_name }}/:/usr/local/apache2/htdocs/:rw
+      - /home/{{ ansible_user }}/{{ instance_1.site_name }}/:/usr/local/apache2/htdocs/:rw
