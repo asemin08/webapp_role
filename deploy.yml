@@ -1,0 +1,53 @@
+---
+- name: Deploy a container
+  hosts: all
+  vars_files:
+    - /home/admin/ansible-tp/files/secrets/credentials.vault
+  pre_tasks:
+    
+    - name: install dependencies
+      package:
+        name: "{{ item }}"
+        state: "present"
+      loop:
+        - epel-release
+        - git
+      when: ansible_distribution == "CentOS"
+
+    - name: "download Python-pip for docker module"
+      get_url:
+        url: https://bootstrap.pypa.io/pip/2.7/get-pip.py
+        dest: /tmp/get-pip.py
+ 
+    - name: "install python-pip"
+      command: python2.7 /tmp/get-pip.py
+      
+    - name: Install docker python
+      pip: name=docker-py
+
+  tasks: 
+   
+    - name: "Create directory webapp"
+      file:
+        path: /home/admin/webapp
+        state: directory
+        
+    - name: "Download data from git repo"
+      git:
+        repo: 'https://github.com/diranetafen/static-website-example.git'
+        dest: /home/admin/webapp
+    
+    - name: "Copy new template"
+      template: 		
+        src: index.html.j2
+        dest: /home/{{ ansible_user }}/webapp/index.html
+
+    - name: "launch docker container"
+      docker_container:
+        name: webapp
+        image: httpd
+        ports: 
+          - "80:80"
+        volumes:
+          - /home/admin/webapp/:/usr/local/apache2/htdocs/:rw
+ 
