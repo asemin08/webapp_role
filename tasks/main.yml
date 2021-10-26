@@ -1,3 +1,4 @@
+---
 - name: "Create directory webapp"
   file:
     path: /home/{{ my_ansible_user }}/{{ instance_1.directory_web_site }}
