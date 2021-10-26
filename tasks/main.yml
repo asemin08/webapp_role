@@ -1,4 +1,3 @@
----   
 - name: "Create directory webapp"
   file:
     path: /home/{{ my_ansible_user }}/{{ instance_1.directory_web_site }}
@@ -16,7 +15,7 @@
 
 - name: "launch docker container"
   docker_container:
-    name: "{{ instance_1.docker_name }}"
+    name: "{{ instance_1.container_name }}"
     image: httpd
     ports: 
       - "{{ instance_1.port }}:80"

@@ -1,6 +1,6 @@
 ---
 namespace: community
-name: webapp-role
+name: webapp_static_role
 version: 1.0.0
 readme: README.md
 authors:
