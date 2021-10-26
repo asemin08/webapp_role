@@ -1,0 +1,26 @@
+---
+tasks:    
+  - name: "Create directory webapp"
+    file:
+      path: /home/{{my_ansible_user}}/webapp
+      state: directory
+        
+  - name: "Download data from git repo"
+    git:
+      repo: 'https://github.com/diranetafen/static-website-example.git'
+      dest: /home/{{my_ansible_user}}/webapp
+    
+  - name: "Copy new template"
+    template: 		
+      src: index.html.j2
+      dest: /home/{{my_ansible_user}}/webapp/index.html
+
+  - name: "launch docker container"
+    docker_container:
+      container_name: "{{instance_1.container_name}}"
+      image: httpd
+      ports: 
+        - "{{instance_1.port}}:80"
+      volumes:
+        - /home/{{my_ansible_user}}/webapp/:/usr/local/apache2/htdocs/:rw
+ 

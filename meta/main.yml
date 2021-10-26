@@ -1,0 +1,6 @@
+---
+galaxy_info:
+  role_name: webapp_static_role
+  author: Allan
+  description: Ansible webapp static role
+  company: ALLAN

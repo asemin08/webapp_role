@@ -1,0 +1,8 @@
+---
+administrator: Allan
+my_ansible_user: admin
+
+instance_1:
+  port: 8080
+  site_name: Allan webapp
+  container_name: httpd

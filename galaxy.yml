@@ -1,0 +1,16 @@
+---
+namespace: community
+name: webapp-role
+version: 1.0.0
+readme: README.md
+authors:
+  - Allan semin
+description: Install webapp static page
+license_file: COPYING
+tags:
+  - v1
+repository: https://github.com/asemin08/webapp_role.git
+documentation: https://github.com/asemin08/webapp_role.git
+homepage: https://github.com/asemin08/webapp_role.git
+issues: https://github.com/asemin08/webapp_role.git
+ 
