@@ -4,6 +4,6 @@ my_ansible_user: admin
 
 instance_1:
   port: 8080
-  site_name: Allan webapp
+  site_name: webapp
   container_name: httpd
-  directory_web_site: webapp
+  titre_webstite: allan
