@@ -6,3 +6,4 @@ instance_1:
   port: 8080
   site_name: Allan webapp
   container_name: httpd
+  directory_web_site: webapp
